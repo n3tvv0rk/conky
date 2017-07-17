@@ -1,0 +1,95 @@
+conky.config={
+update_interval=1,
+--out_to_console=true,
+--out_to_stderr=true,
+format_human_readable=true,
+override_utf8_locale=true,
+use_xft=true,
+double_buffer=true,
+font='size=12',
+own_window=true,
+own_window_transparent=true,
+--!!not under the control of the wm:
+own_window_type="override",
+
+--own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+--own_window_argb_visual = true,
+--own_window_argb_value = 64,
+alignment="top_left",
+
+gap_x = 750,
+gap_y = 55,
+
+};
+
+conky.text = [[
+$alignc Disks
+$hr
+........................... ${color #1E8EF6}SDA$color .............................
+
+${color #1E8EF6}System :${color #737373}  ${goto 95}${fs_used /} $color/${color #737373} ${fs_size /}
+${voffset 6}${goto 30}${fs_used_perc /}%${goto 95}${fs_bar 13,220 /}
+
+${color #1E8EF6}Home :${color #737373}  ${goto 95}${fs_used /home} $color/${color #737373} ${fs_size /home}
+${voffset 6}${goto 30}${fs_used_perc /home}%${goto 95}${fs_bar 13,220 /home}
+
+${color #1E8EF6}Swap :${color #737373}  ${goto 95}$swap $color/${color #737373} $swapmax
+${voffset 6}${goto 30}$swapperc%${goto 95}${swapbar 13,220}$color
+
+${color #1E8EF6}Read : ${color #737373}${diskio_read /dev/sda} \
+${goto 165}${color #1E8EF6}Write: ${color #737373}${diskio_write /dev/sda}
+${diskiograph_read /dev/sda 20,150 00ff00 045FF4} \
+${goto 160} \
+${diskiograph_write /dev/sda 20,150 00ff00 045FF4}$color
+
+........................... ${color #1E8EF6}SDB$color .............................
+
+${color #1E8EF6}Data :${color #737373}  ${goto 95}${fs_used /mnt/data/} $color/${color #737373} ${fs_size /mnt/data}
+${voffset 6}${goto 30}${fs_used_perc /mnt/data/}%${goto 95}${fs_bar 13,220 /mnt/data}
+
+${color #1E8EF6}Read : ${color #737373}${diskio_read /dev/sdb} \
+${goto 165}${color #1E8EF6}Write: ${color #737373}${diskio_write /dev/sdb}
+${diskiograph_read /dev/sdb 20,150 00ff00 045FF4} \
+${goto 160} \
+${diskiograph_write /dev/sdb 20,150 00ff00 045FF4}$color
+
+${if_mounted /mnt/usb}
+........................... ${color #1E8EF6}SDC$color .............................
+
+${color #1E8EF6}USB :${color #737373}  ${goto 95}${fs_used /mnt/usb} $color/${color #737373} ${fs_size /mnt/usb}
+${voffset 6}${goto 30}${fs_used_perc /mnt/usb}%${goto 95}${fs_bar 10,220 /mnt/usb}
+
+${color #1E8EF6}Read : ${color #737373}${diskio_read /dev/sdc} \
+${goto 165}${color #1E8EF6}Write: ${color #737373}${diskio_write /dev/sdc}
+${diskiograph_read /dev/sdc 20,150 00ff00 045FF4} \
+${goto 160} \
+${diskiograph_write /dev/sdc 20,150 00ff00 045FF4}$color
+$endif
+
+${if_mounted /mnt/usb2}
+........................... ${color #1E8EF6}SDD$color .............................
+
+${color #1E8EF6}USB2 :${color #737373}  ${goto 95}${fs_used /mnt/usb2} $color/${color #737373} ${fs_size /mnt/usb2}
+${voffset 6}${goto 30}${fs_used_perc /mnt/usb2}%${goto 95}${fs_bar 10,220 /mnt/usb2}
+
+${color #1E8EF6}Read : ${color #737373}${diskio_read /dev/sdd} \
+${goto 165}${color #1E8EF6}Write: ${color #737373}${diskio_write /dev/sdd}
+${diskiograph_read /dev/sdd 20,150 00ff00 045FF4} \
+${goto 160} \
+${diskiograph_write /dev/sdd 20,150 00ff00 045FF4}$color
+$endif
+
+${if_mounted /mnt/usb3}
+........................... ${color #1E8EF6}SDE$color .............................
+
+${color #1E8EF6}USB3 :${color #737373}  ${goto 95}${fs_used /mnt/usb3} $color/${color #737373} ${fs_size /mnt/usb3}
+${voffset 6}${goto 30}${fs_used_perc /mnt/usb3}%${goto 95}${fs_bar 10,220 /mnt/usb3}
+
+${color #1E8EF6}Read : ${color #737373}${diskio_read /dev/sde} \
+${goto 165}${color #1E8EF6}Write: ${color #737373}${diskio_write /dev/sde}
+${diskiograph_read /dev/sde 20,150 00ff00 045FF4} \
+${goto 160} \
+${diskiograph_write /dev/sde 20,150 00ff00 045FF4}$color
+$endif
+
+]]

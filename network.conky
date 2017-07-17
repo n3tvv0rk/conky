@@ -1,0 +1,51 @@
+conky.config={
+update_interval=1,
+--out_to_console=true,
+--out_to_stderr=true,
+format_human_readable=true,
+override_utf8_locale=true,
+use_xft=true,
+double_buffer=true,
+font='size=12',
+own_window=true,
+own_window_transparent=true,
+--!!not under the control of the wm:
+own_window_type="override",
+maximum_width = 315,
+
+--own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+--own_window_argb_visual = true,
+--own_window_argb_value = 64,
+alignment="top_left",
+
+gap_x = 380,
+gap_y = 55,
+
+};
+
+conky.text = [[
+$alignc Network
+$hr
+
+${color #1E8EF6}Gateway : ${color #737373}$gw_ip$color
+
+${if_up enp0s25}........................... ${color #1E8EF6}LAN$color .............................
+
+${color #1E8EF6}IP : ${color #737373}${addrs enp0s25}
+${color #1E8EF6}↓${color #737373} ${downspeedf enp0s25} KiB/s ${goto 200}${color #1E8EF6}Total:${color #737373} ${totaldown enp0s25}
+${downspeedgraph enp0s25 22,310 00ff00 045FF4}
+${color #1E8EF6}↑${color #737373} ${upspeedf enp0s25} KiB/s ${goto 200}${color #1E8EF6}Total:${color #737373} ${totalup enp0s25}
+${upspeedgraph enp0s25 22,310 00ff00 045FF4}$color
+$endif
+${if_up wlp3s0}......................... ${color #1E8EF6}WLAN$color ............................ 
+
+${color #1E8EF6}IP : ${color #737373}${addrs wlp3s0}${color #1E8EF6} on ${color #737373}${wireless_ap wlp3s0}
+${color #1E8EF6}Quality: ${color #737373}${wireless_link_qual_perc wlp3s0}% ${color #1E8EF6}on ${color #737373}${wireless_essid wlp3s0}
+${color #1E8EF6}Mode : ${color #737373}${wireless_mode wlp3s0}
+
+${color #1E8EF6}↓${color #737373} ${downspeedf wlp3s0} KiB/s ${goto 200}${color #1E8EF6}Total: ${color #737373}${totaldown wlp3s0}
+${downspeedgraph wlp3s0 22,310 00ff00 045FF4}
+${color #1E8EF6}↑${color #737373} ${upspeedf wlp3s0} KiB/s ${goto 200}${color #1E8EF6}Total: ${color #737373}${totalup wlp3s0}
+${upspeedgraph wlp3s0 22,310 00ff00 045FF4}
+$endif
+]]

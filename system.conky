@@ -1,0 +1,66 @@
+conky.config={
+update_interval=1,
+--out_to_console=true,
+--out_to_stderr=true,
+format_human_readable=true,
+override_utf8_locale=true,
+use_xft=true,
+double_buffer=true,
+font='size=12',
+own_window=true,
+own_window_transparent=true,
+--!!not under the control of the wm:
+own_window_type="override",
+maximum_width = 315,
+
+--own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+--own_window_argb_visual = true,
+--own_window_argb_value = 64,
+alignment="top_left",
+gap_x = 10,
+gap_y = 55,
+
+};
+
+conky.text = [[
+${alignc}System
+$hr
+
+${alignc}${color 1E8EF6}Uptime :${color #737373} $uptime_short$color
+
+${alignc}.......................... ${color #1E8EF6}CPU$color ..........................
+
+${alignc}${color 1E8EF6}CPU ${color #737373}${cpu cpu0} %
+${goto 45}${color 1E8EF6}Core1 : ${color #737373}${cpu cpu1} %   ${goto 160}$color--   ${goto 190}${color 1E8EF6}Core3 : ${color #737373}${cpu cpu3} %
+${goto 45}${color 1E8EF6}Core2 : ${color #737373}${cpu cpu2} %   ${goto 160}$color--   ${goto 190}${color 1E8EF6}Core4 : ${color #737373}${cpu cpu4} %
+${cpugraph cpu0 22,310 00ff00 045FF4}
+${alignc}${color 1E8EF6}Freq : ${color #737373}${freq_g 0}GHz$color  -  ${color 1E8EF6}Fan:${color #737373} $ibm_fan rpm $color
+
+${alignc}.......................... ${color #1E8EF6}RAM$color ..........................
+
+$alignc ${color 1E8EF6}Used : ${color #737373}$mem $color- ${color #737373}$memperc %
+$alignc${color 1E8EF6}Buffers: ${color #737373}$buffers ${goto 172}${color 1E8EF6}Cached: ${color #737373}$cached$color
+
+${color 1E8EF6}Free : ${color #737373}$memfree ${goto 172}${color 1E8EF6}+Bu/Ca : ${color #737373}$memeasyfree
+${color #737373}${memgraph 22,310 00ff00 045FF4}$color
+
+${alignc}.......................... ${color #1E8EF6}TOP$color ..........................
+
+${alignc}${color 1E8EF6}Process : ${color #737373}$processes $color - ${color 1E8EF6}Running processes : ${color #737373}$running_processes
+${alignc}${color 1E8EF6}Running threads : ${color #737373}$running_threads
+
+${color #1E8EF6}Highest CPU${goto 162}PID${goto 260}CPU%${color}${color #737373}
+${top name 1}${goto 152}${top pid 1}${goto 252}${top cpu 1}
+${top name 2}${goto 152}${top pid 2}${goto 252}${top cpu 2}
+${top name 3}${goto 152}${top pid 3}${goto 252}${top cpu 3}
+${top name 4}${goto 152}${top pid 4}${goto 252}${top cpu 4}
+
+${color #1E8EF6}Highest RAM${goto 162}PID${goto 260}RAM%${color}${color #737373}
+${top_mem name 1}${goto 152}${top pid 1}${goto 252}${top cpu 1}
+${top_mem name 2}${goto 152}${top pid 2}${goto 252}${top cpu 2}
+${top_mem name 3}${goto 152}${top pid 3}${goto 252}${top cpu 3}
+${top_mem name 4}${goto 152}${top pid 4}${goto 252}${top cpu 4}
+
+
+]]
+

@@ -1,0 +1,44 @@
+conky.config={
+update_interval=1,
+--out_to_console=true,
+--out_to_stderr=true,
+format_human_readable=true,
+override_utf8_locale=true,
+use_xft=true,
+double_buffer=true,
+font='size=12',
+own_window=true,
+own_window_transparent=true,
+--!!not under the control of the wm:
+own_window_type="override",
+
+--own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+--own_window_argb_visual = true,
+--own_window_argb_value = 64,
+alignment="top_left",
+maximum_width = 465,
+
+gap_x = 1120,
+gap_y = 55,
+
+};
+
+conky.text = [[
+$alignc RSS News 
+$hr
+• ${color #1E8EF6}JdH:${color}
+${color #737373}${rss https://www.journalduhacker.net/rss 10 item_titles 4}${color}
+• ${color #1E8EF6}FreeBSD:${color}
+${color #737373}${rss https://www.freebsd.org/news/rss.xml 15 item_title}${color}
+• ${color #1E8EF6}Arch:
+${color #737373}${rss https://archlinux.fr/category/news/feed 15 item_title}${color}
+• ${color #1E8EF6}BlackArch:
+${color #737373}${rss https://blackarch.org/rss.xml 15 item_title}${color}
+• ${color #1E8EF6}Debian:
+${color #737373}${rss https://www.debian.org/News/news 15 item_title}${color}
+• ${color #1E8EF6}Secu:
+${color #737373}${rss https://www.asafety.fr/feed/ 15 item_title}
+${rss https://www.leblogduhacker.fr/feed/ 15 item_title}
+${rss http://seclists.org/rss/fulldisclosure.rss 15 item_title}
+${color}
+]]
